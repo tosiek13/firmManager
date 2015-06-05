@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script language="javascript" type="text/javascript" src="register.js"></script>
+		<title>Firm manager</title>
+	</head>
+<body>
+	<header>
+			<form id="logging" name="logging" method="post" action="authentication.php">
+				<table>
+					<tr>	<td>Login</td>	<td>Password</td></tr>
+					<tr>	<td><input type="text" id="login" name="login"/></td>
+							<td><input type="password" id="password"  name="password" /></td>
+					</tr>
+				</table>	
+				<input type="button" value="Login" onclick="authenticate();"/></td>
+			</form>
+	</header>
+	<article>
+		<form id='registration' name="registration" method="post" action="register.php">
+			<table width="25%">
+				<tr>	<td colspan="2">Registration</td>	</tr>
+				<tr>	<td>Login</td>	<td><input type="text" id="login" name="login"/></td>	</tr>
+				<tr>	<td>Password</td>	<td><input type="password" id="password"  name="password" /></td></tr>
+				<tr>	<td>Repeat Password</td>	<td><input type="password" id="repeatpass"  name="repeatpass" /></td></tr>
+				<tr>	<td>Company Name</td>	<td><input type="text" id="companyName" name="companyName"/></td>	</tr>
+				<tr>	<td>E-mail</td>	<td><input type="text" id="email" name="email" /></td>	</tr>
+				<tr>	<td><div id="registerResult"></div></td>	</tr>
+			</table>
+			<input type="button" value="Register" onclick="register();"/>
+		</form>
+	</article>
+</body>
+</html>

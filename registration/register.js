@@ -1,14 +1,16 @@
 function register(){
-
+	
         var companyName = document.getElementById("companyName").value;
         var login = document.getElementById("login").value;
 	var haslo = document.getElementById("password").value;
 	var repeadHaslo = document.getElementById("repeatpass").value;
         var email = document.getElementById("email").value;
+	var registerResult = document.getElementById("registerResult");
 
+	//Email validity contition.
+        var mailRegex = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z0-9.-]{2,4}$/;
+        var odp = mailRegex.test(email);
 
-        var mainRegex = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z0-9.-]{2,4}$/;
-        var odp = regex.test(mail);
         if(login==''){
            registerResult.innerHTML = '<b>Login</b> is mandatory.';
         }else if (!odp){
@@ -17,9 +19,9 @@ function register(){
                 registerResult.innerHTML = '<b>Repeated pasword</b> differs from password.';
         }else if(haslo==''){
            	registerResult.innerHTML = '<b>Password</b> not specified.';
-        }else if(haslo.value.length < 4){
+        }else if(haslo.length < 4){
 		registerResult.innerHTML = '<b>Password</b> too short.';
-	}else if(mail==''){
+	}else if(email==''){
            	registerResult.innerHTML = '<b>email</b> not specified';
         }else{
 		document.registration.submit();

@@ -2,7 +2,7 @@
 	//Opening the DB (or creating)
 	class MainDB extends SQLite3{
 		function __construct(){
-		 	$this->open('../databases/companies.db');
+		 	$this->open('../databases/companies',  'SQLITE3_OPEN_CREATE');
 		}
 	}
    

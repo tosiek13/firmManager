@@ -1,0 +1,25 @@
+<?php
+	//Opening the DB (or creating)
+	class MainDB extends SQLite3{
+		function __construct(){
+		 	$this->open('../databases/companies.db');
+		}
+	}
+   
+	$db = new MainDB();
+	if(!$db){
+		echo $db->lastErrorMsg();
+	} else {
+		echo "Opened database successfully\n";
+	}
+   
+	$sql ="CREATE TABLE simple(login	TEXT	NOT NULL);";
+
+	$ret = $db->exec($sql);
+	if(!$ret){
+		echo $db->lastErrorMsg();
+	} else {
+		echo "Table created successfully\n";
+	}
+	$db->close();
+?>
