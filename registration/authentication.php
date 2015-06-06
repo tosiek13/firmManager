@@ -1,6 +1,10 @@
 <?php
-  function loadMainPage(){
-    echo "Congratulation. You are granted with access to db !!!";
+  // Start the session
+  function startSession($companyName){
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+    $_SESSION['login'] = (string)$companyName;
   }
 ?>
 
@@ -12,8 +16,8 @@
     
 
     //Getting datas from form
-    $login = $_POST["Autlogin"];
-    $password = $_POST["Autpassword"];
+    $login = $_POST["login"];
+    $password = $_POST["password"];
    
     //Get data to authenticate
     $STH = $DBH->prepare("SELECT * FROM clients WHERE login=? AND password=?");
@@ -27,10 +31,11 @@
   		print $row['email'];
     }
 
-    if( count($result) == 1 ){
-        loadMainPage();
+    if( count($result) >= 1 ){
+      startSession($login);
+      echo "OK";
     }else {
-        echo "Failed to authenticate try again.";
+      echo "Failed to authenticate, incorrect login or password";
     }
 
     // close the database connection
