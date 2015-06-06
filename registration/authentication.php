@@ -1,4 +1,10 @@
 <?php
+  function loadMainPage(){
+    echo "Congratulation. You are granted with access to db !!!";
+  }
+?>
+
+<?php
   try
   {
     //open the database
@@ -20,9 +26,9 @@
   		print $row['companyName'];
   		print $row['email'];
     }
-    echo count($result);
+
     if( count($result) == 1 ){
-        echo "Authentication sucesfull !";
+        loadMainPage();
     }else {
         echo "Failed to authenticate try again.";
     }

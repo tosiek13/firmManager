@@ -23,9 +23,8 @@
  
 	$STH = $DBH->prepare("INSERT INTO clients(login, password, companyName, email) values (?, ?, ?, ?)");
 	$STH->execute($data);
-    /*$db->exec("INSERT INTO clients (name, surname, password, companyName) VALUES ('tochur', 'tosiek', 'pass', 'tochurCompany');");
-    $db->exec("INSERT INTO clients (name, surname, password, companyName) VALUES ('tochur3', 'tosiek', 'pass', 'tochurCompany');");
-    */
+   
+   
     //now output the data to a simple html table...
     print "<table border=1>";
     print "<tr><td>Id</td><td>Login</td><td>Company Name</td><td>email</td></tr>";
