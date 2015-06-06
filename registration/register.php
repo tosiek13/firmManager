@@ -1,39 +1,49 @@
 <?php
-	//Opening the DB (or creating)
-	class MainDB extends SQLite3{
-		function __construct(){
-		 	$this->open('../databases/companies.db');
-		}
-	}
-   
-	$db = new MainDB();
-	if(!$db){
-		echo $db->lastErrorMsg();
-	} else {
-		echo "Opened database successfully\n";
-	}
-   
-	$sql ="CREATE TABLE companies(
-	login           	TEXT    	NOT NULL,
-	password        	TEXT     NOT NULL,
-	companyName     	CHAR(50),
-	email					TEXT 		NOT NULL);";
+  try
+  {
+    //open the database
+    $DBH = new PDO('sqlite:../databases/main/clients.db');
 
-	$ret = $db->exec($sql);
-	if(!$ret){
-		echo $db->lastErrorMsg();
-	} else {
-		echo "Table created successfully\n";
-	}
+    //create the table in database
+    $DBH->exec("CREATE TABLE clients (Id INTEGER PRIMARY KEY, login TEXT, password TEXT, companyName TEXT, email TEXT)");    
 
-	//Adding record
-	$sql = 'INSERT INTO companies (login, password, companyName, email) VALUES ("tochur", "pass", "tochurCompany", "tochur@gmail.com");';
-	
-	$ret = $db->exec($sql);
-	if(!$ret){
-		echo $db->lastErrorMsg();
-	} else {
-		echo "Records created successfully\n";
-	}
-	$db->close();
+    //Getting datas from form
+    $login = $_POST["login"];
+    $password = $_POST["password"];
+    $companyName = $_POST["companyName"];
+    $email = $_POST["email"];
+
+    //Validation data from file
+   
+
+
+
+    //insert some data... using unnamed placeholder to prevent SQL injection attacks.
+    $data = array($login, $password, $companyName, $email);
+ 
+	$STH = $DBH->prepare("INSERT INTO clients(login, password, companyName, email) values (?, ?, ?, ?)");
+	$STH->execute($data);
+    /*$db->exec("INSERT INTO clients (name, surname, password, companyName) VALUES ('tochur', 'tosiek', 'pass', 'tochurCompany');");
+    $db->exec("INSERT INTO clients (name, surname, password, companyName) VALUES ('tochur3', 'tosiek', 'pass', 'tochurCompany');");
+    */
+    //now output the data to a simple html table...
+    print "<table border=1>";
+    print "<tr><td>Id</td><td>Login</td><td>Company Name</td><td>email</td></tr>";
+    $result = $DBH->query('SELECT * FROM clients');
+    foreach($result as $row)
+    {
+    	print "<tr><td>".$row['Id']."</td>";
+		print "<td>".$row['login']."</td>";
+		print "<td>".$row['companyName']."</td>";
+		print "<td>".$row['email']."</td></tr>";
+    }
+    print "</table>";
+
+    // close the database connection
+    $DHB = NULL;
+  }
+  catch(PDOException $e)
+  {
+    print 'Exception : '.$e->getMessage();
+  }
 ?>
