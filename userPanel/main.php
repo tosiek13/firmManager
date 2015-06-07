@@ -16,6 +16,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script type="text/javascript" src="listeners.js"></script>
+        <script type="text/javascript" src="../controllers/patientDetails.js"></script>
     </head>
     <body>
         <head>
@@ -24,7 +25,7 @@
         <nav>
                   <name class="companyName"><?php echo $_SESSION['login']; ?></name>
                   <items>
-                      <item onclick = "doSth()"><more>PATIENTS</more></item>
+                      <item onclick = "showPatientsSpider()"><more>PATIENTS</more></item>
                       <item onclick = "showAddPatientForm()"><more>ADD PATIENT</more></item>
                  </items>
          </nav>
@@ -33,7 +34,6 @@
          </aside>	
          <section>
          	<article>
-         		There is some info.
          	</article>
          </section>	
     </body>
