@@ -3,6 +3,42 @@ function logIn(){
 }
 
 
+
+function showCachedPatients(){
+	var table = document.createElement("table");
+
+	for(var i = 1; i<=localStorage.patientsAmount; i++){
+		var key = "p" + i;
+
+		nameKey = key + "name";
+		alert("Key: " + nameKey);
+    	var name = localStorage[nameKey];
+    	surnameKey = key + "surname";
+    	var surname = localStorage[surnameKey];
+    	ageKey = key + "age";
+    	var age = localStorage[ageKey];
+
+	    /**Patient in array creation**/
+		var row = document.createElement("tr");
+		var data1 = document.createElement("td");
+		var text1 = document.createTextNode("Name: ");
+			data1.appendChild(text1);
+		var data2 = document.createElement("td");
+		var text2 = document.createTextNode(name);
+			data2.appendChild(text2);
+		//creating row structure
+			row.appendChild(data1);
+			row.appendChild(data2);
+		table.appendChild(row);
+	}
+
+	document.getElementsByTagName('article')[0].innerHTML = "";
+	document.getElementsByTagName('article')[0].appendChild(table);
+}
+
+/**********************************************************************************/
+
+
 /*Creates form for patients searching in db.*/
 function showPatientsSpider(){
 	var f = document.createElement("form");
@@ -95,6 +131,8 @@ function getPatient(){
     }
 }
 
+/*****************************************************************************************/
+
 /*Creates and display Form which anables user to add new patient to db.*/
 function showAddPatientForm(){
 	var f = document.createElement("form");
@@ -150,24 +188,32 @@ function addPatient(){
 	var age = document.getElementById("age").value;
        
     if(name == ''){
-        addPatientResult.innerHTML += 'Error !!! Cannot add patients without login info.';
+        addPatientResult.innerHTML += 'Error !!! Cannot add patients without name info.';
     }else{
-    	var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var response = xmlhttp.responseText;
-                var index = response.indexOf("OK");
-                if( index != -1){
-                    //window.location.href = "../userPanel/main.php";
-                }else{
-                    addPatientResult.innerHTML += " Adding patients failed !!!";
-                    addPatientResult.innerHTML += response;
-                }            
-            }
-        }
-        var parameters="name="+name+"&surname="+surname+"&age="+age;
-        xmlhttp.open("POST", "../controllers/addPatient.php", true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send(parameters);
+    	//Adding patient to cache.
+
+    	/*Incrementing amount index.*/
+    	var oldAmount = localStorage.patientsAmount;
+    	var amount;
+    	if(oldAmount != undefined){
+    		amount = parseInt(oldAmount) + 1;
+    		localStorage.patientsAmount = amount;
+    		alert(localStorage.patientsAmount + " patient in cache.");
+    	}else{
+    		amount = 1;
+    		localStorage.patientsAmount = 1;
+    		alert("First patient in cache.");
+    	}
+    	/* Adding patients data to cache. */
+    	key = "p" + amount;
+    	
+    	nameKey = key + "name";
+    	localStorage[nameKey] = name;
+    	surnameKey = key + "surname";
+    	localStorage[surnameKey] = surname;
+    	ageKey = key + "age";
+    	localStorage[ageKey] = age;
+
+    	//localStorage.clear();
     }
 }
