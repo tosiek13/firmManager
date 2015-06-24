@@ -1,8 +1,7 @@
-/*Redirecting to offLine service */
+function logIn(){
+	window.location.href = "../../registration/offLine/panel.html"
+}
 
-
-
-/************************************************************/
 
 /*Creates form for patients searching in db.*/
 function showPatientsSpider(){

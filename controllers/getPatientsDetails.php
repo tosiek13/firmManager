@@ -14,11 +14,7 @@
   try{
     //open the database
     $DBH = new PDO('sqlite:../databases/clients/'.$_SESSION["login"].'.db'); 
-   
-    //insert some data... using unnamed placeholder to prevent SQL injection attacks.
-       //insert some data... using unnamed placeholder to prevent SQL injection attacks.
-    /*$STH = $DBH->prepare("SELECT * FROM patients WHERE surname LIKE ?");
-    $STH->execute(array('$surname%'));*/
+
     $STH = $DBH->prepare("SELECT * FROM patients WHERE Id = ?");
     $STH->execute(array($id));
 
@@ -28,8 +24,8 @@
       $name = $patient['name'];
       $surname = $patient['surname'];
       $age = $patient['age'];
-      $patient = $patient['Id'];
-      include('../templates/patientThumbnail.tpl') ;
+      $patientId = $patient['Id'];
+      include('../templates/patientChart.tpl') ;
     }
    
     // close the database connection

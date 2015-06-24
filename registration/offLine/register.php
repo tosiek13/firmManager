@@ -2,7 +2,7 @@
   try
   {
     //open the database
-    $DBH = new PDO('sqlite:../../databases/main/clients.db');
+    $DBH = new PDO('sqlite:../databases/main/clients.db');
 
     //create the table in database
     $DBH->exec("CREATE TABLE clients (Id INTEGER PRIMARY KEY, login TEXT, password TEXT, companyName TEXT, email TEXT)");    

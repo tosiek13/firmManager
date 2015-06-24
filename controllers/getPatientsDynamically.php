@@ -10,7 +10,7 @@
    //Getting datas from form
   $name = $_POST['name'];
   $surname = $_POST['surname'];
-  //Validation data from file
+  //Validation data from file(filename)
 
   try{
     //open the database

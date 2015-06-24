@@ -1,28 +1,24 @@
-<?php
-	if (session_status() == PHP_SESSION_NONE) {
-    	session_start();
-  	}else{
-  		echo "Session started already";
-  	}
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script type="text/javascript" src="listeners.js"></script>
-        <script type="text/javascript" src="../controllers/patientDetails.js"></script>
+        <!--script type="text/javascript" src="../controllers/patientDetails.js"></script>
+        <script type="text/javascript" src="../registration/offLine/authenticate.js"></script-->
     </head>
     <body>
         <head>
-                HEAD
+                You are using our service in offLine version. To get access to full service, logIn.
         </head>
         <nav>
-                  <name class="companyName"><?php echo $_SESSION['login']; ?></name>
+                  <name class="companyName"></name>
                   <items>
                       <item onclick = "showPatientsSpider()"><more>PATIENTS</more></item>
                       <item onclick = "showAddPatientForm()"><more>ADD PATIENT</more></item>
+                      <item><more></more></item>
+                      <item><more></more></item>
+                      <item onclick = "logIn()"><more>LOG IN</more></item>
                  </items>
          </nav>
          <aside>
