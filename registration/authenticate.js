@@ -17,6 +17,18 @@ function authenticate(){
                 var response = xmlhttp.responseText;
                 var index = response.indexOf("OK");
                 if( index != -1){
+                        if(localStorage.patientsAmount != undefined){
+                            /*Data synchronization*/ 
+                            alert("In cache there is: " + localStorage.patientsAmount + " patients.");   
+                            var answer = confirm("Would you like to synchronize local data with this account?");
+                            if (answer == true) {
+                                alert("Do synchronization.");
+                                addPatientsToDB();
+                            } else {
+                                alert("No synchronization.");
+                            }
+                        }
+
                     window.location.href = "../userPanel/main.php";
                 }else{
                     alert(response);

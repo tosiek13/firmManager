@@ -7,7 +7,7 @@ function startOffLine(){
                 window.location.href = "../userPanel/offLine/mainOffLine.html";          
             }
         }
-    xmlhttp.open("POST", "endSession.php", true);
+    xmlhttp.open("POST", "../registration/endSession.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send();
 }

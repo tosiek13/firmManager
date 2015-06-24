@@ -20,7 +20,7 @@
 
   try{
     //open the database
-    $DBH = new PDO('sqlite:../databases/clients/'.$_SESSION["login"]$_POST['patientId'].'.db');
+    $DBH = new PDO('sqlite:../databases/clients/'.$_SESSION["login"].'.db');
 
      //create the table in database
     $DBH->exec("CREATE TABLE patients (Id INTEGER PRIMARY KEY, clientId INTEGER, tooth TEXT, treatment TEXT)");    

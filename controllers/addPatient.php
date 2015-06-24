@@ -1,15 +1,9 @@
 <?php
 	if (session_status() == PHP_SESSION_NONE) {
     	session_start();
-  	}else{
-  		echo "Session started already";
-  	}
-?>
-
-<?php
-	echo "Hi I'will try to modify db of user: ".$_SESSION['login'];
-	echo "Got param ".$_POST['name'];
-	echo "Got param ".$_POST['surname'];
+	}else{
+		echo "Session started already";
+	}
 ?>
 
 <?php
@@ -30,12 +24,13 @@
     $data = array($name, $surname, $age);
     //echo "Params passed to db: ".$name.", username: ".$surname; 
  
-	$STH = $DBH->prepare("INSERT INTO patients(name, surname, age) values (?, ?, ?)");
-	$STH->execute($data);
+  	$STH = $DBH->prepare("INSERT INTO patients(name, surname, age) values (?, ?, ?)");
+  	$STH->execute($data);
 
    
     // close the database connection
     $DHB = NULL;
+    print "OK";
   }catch(PDOException $e){
     print 'Exception : '.$e->getMessage();
   }

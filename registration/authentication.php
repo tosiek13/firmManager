@@ -12,7 +12,7 @@
   try
   {
     //open the database
-    $DBH = new PDO('sqlite:../../databases/main/clients.db');
+    $DBH = new PDO('sqlite:../databases/main/clients.db');
     
 
     //Getting datas from form

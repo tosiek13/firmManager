@@ -1,5 +1,5 @@
 function logIn(){
-	window.location.href = "../../registration/offLine/panel.html"
+	window.location.href = "../../registration/panel.html"
 }
 
 

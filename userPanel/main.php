@@ -12,6 +12,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script type="text/javascript" src="listeners.js"></script>
+        <script type="text/javascript" src="../registration/logout.js"></script>
         <script type="text/javascript" src="../controllers/patientDetails.js"></script>
     </head>
     <body>
@@ -23,6 +24,7 @@
                   <items>
                       <item onclick = "showPatientsSpider()"><more>PATIENTS</more></item>
                       <item onclick = "showAddPatientForm()"><more>ADD PATIENT</more></item>
+                      <item onclick = "startOffLine()"><more>LOGOUT</more></item>
                  </items>
          </nav>
          <aside>
