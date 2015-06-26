@@ -1,3 +1,15 @@
+<jawImage id="jawImage">
+	<div id="full">
+		<canvas id="jaw" class="jaw" width="400" height="626"></canvas>
+		<canvas id="jaw_pointer" class="jaw_pointer" width="400" height="626"></canvas>
+	</div>
+</jawImage>
+
+<div id="right">
+	Schemat szczęki.
+</div>
+
+
 <table>
 	<patientId id=<?php echo '"'.$patientId.'"'; ?>>
 	<tr>	<td>Surname: </td><td><?php echo $surname; ?></td>	</tr>

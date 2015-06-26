@@ -14,8 +14,10 @@
         <script type="text/javascript" src="listeners.js"></script>
         <script type="text/javascript" src="../registration/logout.js"></script>
         <script type="text/javascript" src="../controllers/patientDetails.js"></script>
+        <script type="text/javascript" src="../resources/loadResources.js"></script>
+        <script type="text/javascript" src="../controllers/treatment/eventListener.js"></script>
     </head>
-    <body>
+    <body onload = "load()">
         <head>
                 HEAD
         </head>

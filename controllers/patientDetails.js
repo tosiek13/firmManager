@@ -13,9 +13,17 @@ function openClientsChart(patientId){
             }else{
             	result.innerHTML += response;
                 result.innerHTML += "No patients found.";
-            }            
+            }
+
+            /*canvas*/
+            var c = document.getElementById("jaw");
+            var ctx = c.getContext("2d");
+            ctx.drawImage(jawImage, 0, 0);
+            c.addEventListener('click', clickHandler, false);
+            c.addEventListener('mousemove', moveHandler, false);      
         }
     }
+
 
     var parameters="id="+patientId;
     xmlhttp.open("POST", "../controllers/getPatientsDetails.php", true);
