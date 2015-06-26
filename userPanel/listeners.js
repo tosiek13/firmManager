@@ -126,26 +126,23 @@ function getAllPatients(){
 	var surname = document.getElementById("surname").value;
 
 	dynamicResult.innerHTML = "";
-	if(surname == ''){
-        dynamicResult.innerHTML += "Error !!! . At least one (surname or name must be specified)";
-    }else{
-    	var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var response = xmlhttp.responseText;
-                var index = response.indexOf("thumbnail");
-                if( index != -1){
-                    dynamicResult.innerHTML += response;
-                }else{
-                    dynamicResult.innerHTML += "No patients found.";
-                }            
-            }
+	
+	var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var response = xmlhttp.responseText;
+            var index = response.indexOf("thumbnail");
+            if( index != -1){
+                dynamicResult.innerHTML += response;
+            }else{
+                dynamicResult.innerHTML += "No patients found.";
+            }            
         }
-        var parameters="name="+name+"&surname="+surname;
-        xmlhttp.open("POST", "../controllers/getAllPatients.php", true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send(parameters);
-    }	
+    }
+    xmlhttp.open("POST", "../controllers/getAllPatients.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    
 }
 
 /*Creates and display Form which anables user to add new patient to db.*/

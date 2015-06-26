@@ -9,8 +9,9 @@
 	New treatment:
 	<table>
 		<tr>	<td>Tooth: </td>		<td><input id="tooth" type="text"></td>	</tr>
-		<tr>	<td>Date:</td>			<td><input id="date" type="text"></td>	</tr>
 		<tr>	<td>Treatment: </td>	<td><input id="treatment" type="text"></td>	</tr>
+		<tr>	<td>Date:</td>			
+			<td> <input id="date" type="text" value=<?php echo date("d-m-Y").",".date("H:i"); ?>   > </td>	</tr>
 	</table>
 	<input type="button" onclick="addNewTreatment();" value="ADD">
 </form> 

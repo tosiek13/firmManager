@@ -11,9 +11,9 @@
 ?>
 
 <?php
-	//Getting datas from form
     $tooth = $_POST['tooth'];
     $date = $_POST['date'];
+      $date = str_replace(","," ",$date);
     $treatment = $_POST['treatment'];
     $patientId = $_POST['patientId'];
     //Validation data from file
@@ -23,13 +23,13 @@
     $DBH = new PDO('sqlite:../databases/clients/'.$_SESSION["login"].'.db');
 
      //create the table in database
-    $DBH->exec("CREATE TABLE patients (Id INTEGER PRIMARY KEY, clientId INTEGER, tooth TEXT, treatment TEXT)");    
+    $DBH->exec("CREATE TABLE treatments (patientId INTEGER, treatmentDate TEXT, tooth TEXT, treatment TEXT)");    
    
    	//insert some data... using unnamed placeholder to prevent SQL injection attacks.
-    $data = array($clientId, $tooth, $treatment);
+    $data = array($patientId, $date, $tooth, $treatment);
     //echo "Params passed to db: ".$name.", username: ".$surname; 
  
-	$STH = $DBH->prepare("INSERT INTO patients(clientId, tooth, treatment) values (?, ?, ?)");
+	$STH = $DBH->prepare("INSERT INTO treatments(patientId, treatmentDate, tooth, treatment) values (?, ?, ?, ?)");
 	$STH->execute($data);
 
    

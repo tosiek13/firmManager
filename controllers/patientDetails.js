@@ -35,7 +35,6 @@ function addNewTreatment(){
 	var treatment = document.getElementById("treatment").value;
 	var patientId = document.getElementsByTagName("patientId")[0].getAttribute("id");
 
-	alert("Adding new Treatment" + patientId);
 
 	//Validate data;
 	

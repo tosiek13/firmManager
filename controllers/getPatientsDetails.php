@@ -1,9 +1,9 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE) {
-    	session_start();
-  	}else{
-  		echo "Session started already";
-  	}
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }else{
+      echo "Session started already";
+    }
 ?>
 
 <?php
@@ -26,6 +26,21 @@
       $age = $patient['age'];
       $patientId = $patient['Id'];
       include('../templates/patientChart.tpl') ;
+    }
+
+    //open the database
+    $DBH = new PDO('sqlite:../databases/clients/'.$_SESSION["login"].'.db'); 
+
+    $STH = $DBH->prepare("SELECT * FROM treatments WHERE patientId = ?");
+    $STH->execute(array($id));
+
+    $elements =  $STH->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($elements as $patient){
+      $tooth = $patient['tooth'];
+      $treatment = $patient['treatment'];
+      $treatmentDate = $patient['treatmentDate'];
+      include('../templates/treatment.tpl') ;
     }
    
     // close the database connection
